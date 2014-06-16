@@ -1,3 +1,9 @@
+debugMode = False
+
+def onTableLoad():
+  global debugMode
+  debugMode = len(players) == 1
+
 def resetGame():
   notify('Game reset.  me: {}'.format(me))
 
@@ -27,16 +33,25 @@ def setup(group, x = 0, y = 0):
   if len(starting_cards) != 20:
     notify('Not enough cards in the starting cards pile')
     return
-  if len(shared.Explorers) != 10:
+  if len(shared.piles['Explorers']) != 10:
     notify('Deck doesnt have enough Explorers')
     return
-  if len(players) != 2:
+  global debugMode
+  if (not debugMode) and len(players) != 2:
     notify('not enough players')
-    # return
+    return
 
   # TODO deal out trade row
   shared.Deck.shuffle()
-  # TODO set out explorers
+  x = 0
+  for c in shared.Deck.top(5):
+    notify('Dealing {} to Trade Row'.format(c))
+    c.moveToTable(x, 0)
+    x += 50
+
+  # set out explorers
+  for c in shared.piles['Explorers']:
+    c.moveToTable(-300, 0)
 
   # deal out starting cards
   while len(starting_cards) > 0:
