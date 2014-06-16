@@ -1,16 +1,16 @@
 def resetGame():
   notify('Game reset.  me: {}'.format(me))
 
-def endTurn(player):
+def endTurn(group, x = 0, y = 0):
   mute()
 
   for c in table:
-    if c.controller != me():
+    if c.controller != me:
       continue
     if c.properties['type'] == 'Ship':
       c.moveTo(me.Discard)
 
-  for c in me.hand():
+  for c in me.hand:
     c.moveTo(me.Discard)
 
   for i in xrange(5):
