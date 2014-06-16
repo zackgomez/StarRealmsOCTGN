@@ -21,22 +21,22 @@
     </block>
 
     <block type="text" id="action">
-      <location x="45" y="300" />
-      <text color="#111111" size="18" />
+      <location x="45" y="290" />
+      <text color="#111111" size="17" />
       <border color="#000000" size="2" />
-      <wordwrap height="31" width="280" shrinktofit="False" />
+      <wordwrap height="110" width="270" shrinktofit="False" />
     </block>
     <block type="text" id="synergyAction">
-      <location x="45" y="335" />
-      <text color="#111111" size="18" />
+      <location x="45" y="330" />
+      <text color="#111111" size="17" />
       <border color="#000000" size="2" />
-      <wordwrap height="31" width="280" shrinktofit="False" />
+      <wordwrap height="60" width="270" shrinktofit="False" />
     </block>
     <block type="text" id="scrapAction">
       <location x="45" y="370" />
-      <text color="#111111" size="18" />
+      <text color="#111111" size="17" />
       <border color="#000000" size="2" />
-      <wordwrap height="31" width="280" shrinktofit="False" />
+      <wordwrap height="31" width="270" shrinktofit="False" />
     </block>
 
     <!-- TODO

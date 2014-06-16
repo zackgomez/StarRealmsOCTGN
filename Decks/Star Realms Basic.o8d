@@ -17,7 +17,12 @@
     <card qty="2" id="7a8b99e1-db39-4a95-af73-61cb31bb0446">Corvette</card>
     <card qty="3" id="2cccc5d7-76e9-4c98-a37b-31d95ef20f3b">Blob Fighter</card>
     <card qty="3" id="9b37492d-ac9e-4e81-9ada-87ee2a485f26">Blob Wheel</card>
+    <card qty="1" id="ae71d0ed-52aa-4cba-becd-567e7b90e20e">Fleet HQ</card>
+    <card qty="1" id="6a75e65c-8bcd-4c58-928a-129561e1916e">Stealth Needle</card>
+    <card qty="1" id="5464e13a-d851-4433-8c45-9f7a412da659">Junkyard</card>
+    <card qty="1" id="3bf3bd81-5230-4deb-ab3b-4d31c60a07a8">Mech World</card>
+    <card qty="2" id="e6e14035-3885-46af-8443-e662b0fc602d">Barter World</card>
+    <card qty="2" id="bb645750-2ce5-4eef-af68-5a5d89bdee15">Embassy Yacht</card>
   </section>
-  <section name="Scrap" shared="True" />
   <notes><![CDATA[]]></notes>
 </deck>
