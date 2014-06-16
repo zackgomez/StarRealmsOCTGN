@@ -53,13 +53,11 @@ def setup(group, x = 0, y = 0):
     notify('not enough players')
     return
 
-  # TODO deal out trade row
+  # deal out trade row
   shared.Deck.shuffle()
   x = -100
-  for c in shared.Deck.top(5):
-    c.moveToTable(x, 0)
-    c.markers[neutralMarker] = 1
-    notify('Dealing {} to Trade Row'.format(c))
+  for i in xrange(5):
+    replaceTradeCard(x, 0)
     x += 100
 
   # set out explorers
@@ -155,3 +153,35 @@ def scrapAction(card, x = 0, y = 0):
   if len(actionText) > 0:
     notify("{} takes scrap action on {}: {}".format(me, card, actionText))
     scrap(card, x, y)
+
+def replaceTradeCard(x, y):
+  if len(shared.Deck) == 0:
+    notify('Deck is out of cards')
+    return
+  for c in shared.Deck.top(1):
+    c.moveToTable(x, y)
+    c.markers[neutralMarker] = 1
+    notify('Added {} to trade row'.format(c))
+
+def scrapTradeCard(card, x = 0, y = 0):
+  mute()
+  if card.markers[neutralMarker] != 1:
+    whisper('that card is not a trade card')
+    return
+  notify("{} scraps trade card {}".format(me, card))
+  cardX, cardY = card.position
+  scrap(card, x, y)
+  replaceTradeCard(cardX, cardY)
+
+def buyTradeCard(card, x = 0, y = 0):
+  mute()
+  if card.markers[neutralMarker] != 1:
+    whisper('that card is not a trade card')
+    return
+  cost = card.properties['Cost']
+  notify('{} purchased card {} for {}'.format(me, card, cost))
+  me.counters['Trade'] -= cost
+  cardX, cardY = card.position
+  card.moveTo(me.Discard)
+
+  replaceTradeCard(cardX, cardY)

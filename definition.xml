@@ -5,7 +5,7 @@
   name="StarRealms"
   id="d250a313-c423-45e3-9c72-3182db31d925"
   octgnVersion="3.1.0.0"
-  version="1.0.0.13"
+  version="1.0.0.14"
   markersize="20"
   setsurl="http://octgn.zackgomez.com/starreals/sets"
   gameurl="http://octgn.zackgomez.com/starrealms"
@@ -55,6 +55,10 @@
     <cardaction menu="Activate Synergy Action" execute="synergyAction" />
     <cardaction menu="Activate Scrap Action" execute="scrapAction" />
     <cardaction menu="Scrap Card" execute="scrap" />
+
+    <cardaction menu="Scrap Trade Card" execute="scrapTradeCard" />
+    <cardaction menu="Buy Card" execute="buyTradeCard" />
+
     <groupaction menu="End Turn" execute="endTurn" />
     <groupaction menu="Set Up Game" execute="setup" />
   </table>
