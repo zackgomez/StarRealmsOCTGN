@@ -36,6 +36,28 @@
       <property name="BaseArmor" value="0" />
       <property name="BaseProtect" value="False" />
     </card>
+
+    <card name="Federation Shuttle" id="d9a3bd5f-289d-449e-8ee1-401c8b5b924d">
+      <property name="Faction" value="Trade Federation" />
+      <property name="Type" value="Ship" />
+      <property name="Cost" value="1" />
+      <property name="Action" value="2 Trade" />
+      <property name="SynergyAction" value="4 Authority" />
+      <property name="ScrapAction" value="" />
+      <property name="BaseArmor" value="0" />
+      <property name="BaseProtect" value="False" />
+    </card>
+    <card name="Defense Center" id="da40c8ae-5a7a-480e-b1a9-b0b8ab0cc662">
+      <property name="Faction" value="Trade Federation" />
+      <property name="Type" value="Base" />
+      <property name="Cost" value="5" />
+      <property name="Action" value="3 Authority or 2 Combat" />
+      <property name="SynergyAction" value="2 Combat" />
+      <property name="ScrapAction" value="" />
+      <property name="BaseArmor" value="5" />
+      <property name="BaseProtect" value="True" />
+    </card>
+
     <card name="Trade Bot" id="4b6b1202-4495-4e7d-8396-279c59c98920">
       <property name="Faction" value="Machine Cult" />
       <property name="Type" value="Ship" />
@@ -46,6 +68,18 @@
       <property name="BaseArmor" value="0" />
       <property name="BaseProtect" value="False" />
     </card>
+
+    <card name="Battle Mech" id="877e9caa-db13-45eb-8c31-ca0d265ab9ac">
+      <property name="Faction" value="Machine Cult" />
+      <property name="Type" value="Ship" />
+      <property name="Cost" value="5" />
+      <property name="Action" value="4 Combat; You may scrap a card in your hand or discard pile" />
+      <property name="SynergyAction" value="Draw a card" />
+      <property name="ScrapAction" value="" />
+      <property name="BaseArmor" value="0" />
+      <property name="BaseProtect" value="False" />
+    </card>
+
     <card name="Imperial Fighter" id="972b66cf-c60b-4231-8150-cd062daa288f">
       <property name="Faction" value="Star Empire" />
       <property name="Type" value="Ship" />
@@ -54,6 +88,16 @@
       <property name="SynergyAction" value="2 Combat" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
+      <property name="BaseProtect" value="False" />
+    </card>
+    <card name="Corvette" id="7a8b99e1-db39-4a95-af73-61cb31bb0446">
+      <property name="Faction" value="Star Empire" />
+      <property name="Type" value="Ship" />
+      <property name="Cost" value="2" />
+      <property name="Action" value="1 Combat; Draw a card" />
+      <property name="SynergyAction" value="2 Combat" />
+      <property name="ScrapAction" value="" />
+      <property name="BaseArmor" value="4" />
       <property name="BaseProtect" value="False" />
     </card>
     <card name="Space Station" id="0ed44101-aee8-4185-8835-2058d24d1bab">
@@ -66,7 +110,36 @@
       <property name="BaseArmor" value="4" />
       <property name="BaseProtect" value="True" />
     </card>
+    <card name="Blob Fighter" id="2cccc5d7-76e9-4c98-a37b-31d95ef20f3b">
+      <property name="Faction" value="Blob" />
+      <property name="Type" value="Ship" />
+      <property name="Cost" value="1" />
+      <property name="Action" value="3 Combat" />
+      <property name="SynergyAction" value="Draw a card." />
+      <property name="ScrapAction" value="" />
+      <property name="BaseArmor" value="0" />
+      <property name="BaseProtect" value="False" />
+    </card>
+    <card name="Blob Wheel" id="9b37492d-ac9e-4e81-9ada-87ee2a485f26">
+      <property name="Faction" value="Blob" />
+      <property name="Type" value="Base" />
+      <property name="Cost" value="3" />
+      <property name="Action" value="1 Combat" />
+      <property name="SynergyAction" value="" />
+      <property name="ScrapAction" value="3 Trade" />
+      <property name="BaseArmor" value="5" />
+      <property name="BaseProtect" value="False" />
+    </card>
+    <card name="Battle Blob" id="0ed44101-aee8-4185-8835-2058d24d1bab">
+      <property name="Faction" value="Blob" />
+      <property name="Type" value="Ship" />
+      <property name="Cost" value="6" />
+      <property name="Action" value="8 Combat" />
+      <property name="SynergyAction" value="Draw a card." />
+      <property name="ScrapAction" value="4 Combat" />
+      <property name="BaseArmor" value="0" />
+      <property name="BaseProtect" value="False" />
+    </card>
   </cards>
 </set>
-
 

@@ -1,17 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <deck game="d250a313-c423-45e3-9c72-3182db31d925">
-  <section name="Main" shared="True" />
-  <section name="Scrap" shared="True" />
   <section name="Explorers" shared="True">
     <card qty="10" id="9abd52a8-7310-4527-9234-c2de2ce4c5cc">Explorer</card>
   </section>
-  <section name="Player 1" shared="True">
-    <card qty="2" id="b8873f27-0d29-4ca8-a717-4ebaf75229e9">Viper</card>
-    <card qty="8" id="24d3d7a7-ba11-47c4-9b43-43448cc23920">Scout</card>
+  <section name="Starting Cards" shared="True">
+    <card qty="16" id="24d3d7a7-ba11-47c4-9b43-43448cc23920">Scout</card>
+    <card qty="4" id="b8873f27-0d29-4ca8-a717-4ebaf75229e9">Viper</card>
   </section>
-  <section name="Player 2" shared="True">
-    <card qty="2" id="24d3d7a7-ba11-47c4-9b43-43448cc23920">Scout</card>
-    <card qty="8" id="b8873f27-0d29-4ca8-a717-4ebaf75229e9">Viper</card>
+  <section name="Main" shared="True">
+    <card qty="3" id="0ed44101-aee8-4185-8835-2058d24d1bab">Space Station</card>
+    <card qty="3" id="972b66cf-c60b-4231-8150-cd062daa288f">Imperial Fighter</card>
+    <card qty="3" id="4b6b1202-4495-4e7d-8396-279c59c98920">Trade Bot</card>
+    <card qty="3" id="d9a3bd5f-289d-449e-8ee1-401c8b5b924d">Federation Shuttle</card>
+    <card qty="1" id="da40c8ae-5a7a-480e-b1a9-b0b8ab0cc662">Defense Center</card>
+    <card qty="1" id="877e9caa-db13-45eb-8c31-ca0d265ab9ac">Battle Mech</card>
+    <card qty="2" id="7a8b99e1-db39-4a95-af73-61cb31bb0446">Corvette</card>
+    <card qty="3" id="2cccc5d7-76e9-4c98-a37b-31d95ef20f3b">Blob Fighter</card>
+    <card qty="3" id="9b37492d-ac9e-4e81-9ada-87ee2a485f26">Blob Wheel</card>
   </section>
+  <section name="Scrap" shared="True" />
   <notes><![CDATA[]]></notes>
 </deck>

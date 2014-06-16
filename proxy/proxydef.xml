@@ -16,27 +16,27 @@
 
     <block type="text" id="faction">
       <location x="10" y="250" />
-      <text color="#000000" size="25" />
+      <text color="#000000" size="24" />
       <border color="#000000" size="2" />
     </block>
 
     <block type="text" id="action">
       <location x="45" y="300" />
-      <text color="#111111" size="20" />
+      <text color="#111111" size="18" />
       <border color="#000000" size="2" />
-      <wordwrap height="31" width="349" shrinktofit="False" />
+      <wordwrap height="31" width="280" shrinktofit="False" />
     </block>
     <block type="text" id="synergyAction">
-      <location x="45" y="330" />
-      <text color="#111111" size="20" />
+      <location x="45" y="335" />
+      <text color="#111111" size="18" />
       <border color="#000000" size="2" />
-      <wordwrap height="31" width="349" shrinktofit="False" />
+      <wordwrap height="31" width="280" shrinktofit="False" />
     </block>
     <block type="text" id="scrapAction">
-      <location x="45" y="360" />
-      <text color="#111111" size="20" />
+      <location x="45" y="370" />
+      <text color="#111111" size="18" />
       <border color="#000000" size="2" />
-      <wordwrap height="31" width="349" shrinktofit="False" />
+      <wordwrap height="31" width="280" shrinktofit="False" />
     </block>
 
     <!-- TODO
