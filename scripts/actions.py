@@ -1,4 +1,7 @@
 debugMode = False
+cardsPlayedThisTurn = 0
+
+neutralMarker = ("Owned By Table", "fabd2965-929e-4ee9-b69c-e278e3cd4098")
 
 def onTableLoad():
   global debugMode
@@ -13,8 +16,11 @@ def endTurn(group, x = 0, y = 0):
   for c in table:
     if c.controller != me:
       continue
-    if c.properties['type'] == 'Ship':
-      c.moveTo(me.Discard)
+    if c.properties['type'] != 'Ship':
+      continue
+    if c.markers[neutralMarker] > 0:
+      continue
+    c.moveTo(me.Discard)
 
   for c in me.hand:
     c.moveTo(me.Discard)
@@ -43,15 +49,17 @@ def setup(group, x = 0, y = 0):
 
   # TODO deal out trade row
   shared.Deck.shuffle()
-  x = 0
+  x = -100
   for c in shared.Deck.top(5):
-    notify('Dealing {} to Trade Row'.format(c))
     c.moveToTable(x, 0)
-    x += 50
+    c.markers[neutralMarker] = 1
+    notify('Dealing {} to Trade Row'.format(c))
+    x += 100
 
   # set out explorers
   for c in shared.piles['Explorers']:
     c.moveToTable(-300, 0)
+    c.markers[neutralMarker] = 1
 
   # deal out starting cards
   while len(starting_cards) > 0:
@@ -70,6 +78,14 @@ def setup(group, x = 0, y = 0):
   notify('Dealt 3 cards to {} and 5 cards to everyone else'.format(startingPlayer.name))
   startingPlayer.setActivePlayer()
 
+def playCard(card, x = 0, y = 0):
+  mute()
+  global cardsPlayedThisTurn
+  if not me.isActivePlayer:
+    whisper('It is not your turn')
+    return
+  card.moveToTable(-300 + cardsPlayedThisTurn * 100, 150)
+  notify('{} plays {}'.format(me, card))
 
 def drawCard(group, count=None):
   mute()
