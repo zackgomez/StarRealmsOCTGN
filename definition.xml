@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<game
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  name="StarRealms"
+  id="d250a313-c423-45e3-9c72-3182db31d925"
+  octgnVersion="3.1.0.0"
+  version="1.0.0.8"
+  markersize="20"
+  setsurl="http://octgn.zackgomez.com/starreals/sets"
+  gameurl="http://octgn.zackgomez.com/starrealms"
+  authors="Zack"
+  iconurl="http://zackgomez.com/derp.png"
+  description="Star Realms"
+  tags=""
+  >
+  <scripts>
+    <script src="scripts/actions.py" />
+  </scripts>
+
+  <events>
+    <event name="OnGameStart" action="resetGame" />
+  </events>
+
+  <fonts>
+  </fonts>
+
+  <proxygen definitionsrc="Proxy/proxydef.xml">
+  </proxygen>
+
+  <documents>
+  </documents>
+
+  <gameModes>
+  </gameModes>
+
+  <globalvariables>
+  </globalvariables>
+
+  <card cornerRadius="3" height="80" width="60" front="cards/front.jpg" back="cards/back.png">
+    <property name="Type" type="String" hidden="False" textKind="Enum" />
+    <property name="Faction" type="String" hidden="False" textKind="Enum" />
+    <property name="Cost" type="Integer" hidden="False" />
+    <property name="Action" type="String" hidden="False" />
+    <property name="SynergyAction" type="String" hidden="False" />
+    <property name="ScrapAction" type="String" hidden="False" />
+    <property name="BaseArmor" type="Integer" hidden="False" />
+    <property name="BaseProtect" type="String" hidden="False" />
+  </card>
+
+  <table name="Table" visibility="undefined" ordered="False" width="1300" height="808" board="proxy/blank.png" boardPosition="-650,-370,1300,808" background="background/background.jpg" backgroundStyle="uniformToFill">
+    <cardaction menu="Scrap Card" execute="scrap" />
+    <groupaction menu="End Turn" execute="endTurn" />
+    <groupaction menu="Set Up Game" execute="setup" />
+  </table>
+
+  <player summary="Authority: {#Authority}">
+    <counter name="Authority" icon="Counters/Authority.png" default="50" reset="True" />
+    <counter name="Trade" icon="Counters/Trade.png" default="0" reset="True" />
+    <counter name="Combat" icon="Counters/Combat.png" default="0" reset="True" />
+
+    <hand name="Hand" icon="Groups/Hand.png" height="88" width="63" ordered="False" visibility="me">
+      <groupaction menu="Draw Card" execute="drawCard" />
+      <cardaction menu="Discard" shortcut="del" default="False" execute="discard" />
+    </hand>
+
+    <group name="Deck" icon="Groups/Deck.png" height="88" width="63">
+      <groupaction menu="Shuffle" shortcut="ctrl+S" execute="shuffle" />
+    </group>
+
+    <group name="Discard" icon="Groups/Discard.png" height="176" width="126" ordered="False" visibility="all" collapsed="False">
+    </group>
+  </player>
+
+  <shared>
+    <group name="Deck" height="88" width="63" visibility="none" icon="Groups/deck.png">
+    </group>
+    <group name="Scrap" height="88" width="63" visibility="all" icon="Groups/Scrap.png">
+    </group>
+    <group name="Starting Cards" height="88" width="63" visibility="none" icon="Groups/deck.png">
+    </group>
+    <group name="Explorers" height="88" width="63" visibility="all" icon="Groups/deck.png">
+    </group>
+  </shared>
+
+  <sharedDeck>
+    <section name="Main" group="Deck"/>
+    <section name="Scrap" group="Scrap"/>
+    <section name="Explorers" group="Explorers"/>
+    <section name="Starting Cards" group="Starting Cards"/>
+  </sharedDeck>
+</game>

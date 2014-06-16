@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<set xmlns:noNamespaceSchemaLocation="CardSet.xsd"
+  name="Basic"
+  id="205dbd16-df44-4c29-b14a-8d0a4dd1d7dc"
+  gameId="d250a313-c423-45e3-9c72-3182db31d925"
+  gameVersion="1.0.0.0"
+  version="1.0.0.0">
+  <cards>
+    <card name="Viper" id="b8873f27-0d29-4ca8-a717-4ebaf75229e9">
+      <property name="Faction" value="None" />
+      <property name="Type" value="Ship" />
+      <property name="Cost" value="0" />
+      <property name="Action" value="1 Combat" />
+      <property name="SynergyAction" value="" />
+      <property name="ScrapAction" value="" />
+      <property name="BaseArmor" value="0" />
+      <property name="BaseProtect" value="False" />
+    </card>
+    <card name="Scout" id="24d3d7a7-ba11-47c4-9b43-43448cc23920">
+      <property name="Faction" value="None" />
+      <property name="Type" value="Ship" />
+      <property name="Cost" value="0" />
+      <property name="Action" value="1 Trade" />
+      <property name="SynergyAction" value="" />
+      <property name="ScrapAction" value="" />
+      <property name="BaseArmor" value="0" />
+      <property name="BaseProtect" value="False" />
+    </card>
+    <card name="Explorer" id="9abd52a8-7310-4527-9234-c2de2ce4c5cc">
+      <property name="Faction" value="None" />
+      <property name="Type" value="Ship" />
+      <property name="Cost" value="2" />
+      <property name="Action" value="2 Trade" />
+      <property name="SynergyAction" value="" />
+      <property name="ScrapAction" value="2 Combat" />
+      <property name="BaseArmor" value="0" />
+      <property name="BaseProtect" value="False" />
+    </card>
+  </cards>
+</set>
+
+

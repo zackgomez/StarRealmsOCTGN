@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<deck game="d250a313-c423-45e3-9c72-3182db31d925">
+  <section name="Main" shared="True" />
+  <section name="Scrap" shared="True" />
+  <section name="Explorers" shared="True">
+    <card qty="10" id="9abd52a8-7310-4527-9234-c2de2ce4c5cc">Explorer</card>
+  </section>
+  <section name="Player 1" shared="True">
+    <card qty="2" id="b8873f27-0d29-4ca8-a717-4ebaf75229e9">Viper</card>
+    <card qty="8" id="24d3d7a7-ba11-47c4-9b43-43448cc23920">Scout</card>
+  </section>
+  <section name="Player 2" shared="True">
+    <card qty="2" id="24d3d7a7-ba11-47c4-9b43-43448cc23920">Scout</card>
+    <card qty="8" id="b8873f27-0d29-4ca8-a717-4ebaf75229e9">Viper</card>
+  </section>
+  <notes><![CDATA[]]></notes>
+</deck>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates>
+  <blocks>
+    <block type="text" id="title">
+      <location x="99" y="28" />
+      <text color="#000000" size="30" />
+      <border color="#000000" size="2" />
+      <wordwrap height="31" width="349" align="center" shrinktofit="True" />
+    </block>
+  </blocks>
+
+  <template src="cards/front.jpg" default="True">
+    <matches>
+      <match name="Type" value="Ship"/>
+    </matches>
+    <textblocks>
+      <link block="title"><property name="Name" /></link>
+    </textblocks>
+  </template>
+</templates>
