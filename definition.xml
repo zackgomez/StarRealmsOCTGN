@@ -5,7 +5,7 @@
   name="StarRealms"
   id="d250a313-c423-45e3-9c72-3182db31d925"
   octgnVersion="3.1.0.0"
-  version="1.0.0.11"
+  version="1.0.0.13"
   markersize="20"
   setsurl="http://octgn.zackgomez.com/starreals/sets"
   gameurl="http://octgn.zackgomez.com/starrealms"
@@ -50,12 +50,16 @@
   </card>
 
   <table name="Table" visibility="undefined" ordered="False" width="1300" height="808" board="proxy/blank.png" boardPosition="-650,-370,1300,808" background="background/background.jpg" backgroundStyle="uniformToFill">
+    <cardaction menu="Double Click" default="True" execute="doubleClick" />
+    <cardaction menu="Activate Action" execute="defaultAction" />
+    <cardaction menu="Activate Synergy Action" execute="synergyAction" />
+    <cardaction menu="Activate Scrap Action" execute="scrapAction" />
     <cardaction menu="Scrap Card" execute="scrap" />
     <groupaction menu="End Turn" execute="endTurn" />
     <groupaction menu="Set Up Game" execute="setup" />
   </table>
 
-  <player summary="Authority: {#Authority}">
+  <player summary="Authority: {#Authority} Trade: {#Trade} Combat: {#Combat}">
     <counter name="Authority" icon="Counters/Authority.png" default="50" reset="True" />
     <counter name="Trade" icon="Counters/Trade.png" default="0" reset="True" />
     <counter name="Combat" icon="Counters/Combat.png" default="0" reset="True" />
@@ -64,6 +68,7 @@
       <groupaction menu="Draw Card" execute="drawCard" />
       <cardaction menu="Play Card" default="True" execute="playCard" />
       <cardaction menu="Discard" shortcut="del" execute="discard" />
+      <cardaction menu="Scrap Card" execute="scrap" />
     </hand>
 
     <group name="Deck" icon="Groups/Deck.png" height="88" width="63">
@@ -71,6 +76,7 @@
     </group>
 
     <group name="Discard" icon="Groups/Discard.png" height="176" width="126" ordered="False" visibility="all" collapsed="False">
+      <cardaction menu="Scrap Card" execute="scrap" />
     </group>
   </player>
 

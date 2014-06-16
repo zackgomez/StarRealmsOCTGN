@@ -2,6 +2,8 @@ debugMode = False
 cardsPlayedThisTurn = 0
 
 neutralMarker = ("Owned By Table", "fabd2965-929e-4ee9-b69c-e278e3cd4098")
+actionMarker = ("Action Spent", "2cccc5d7-76e9-4c98-a37b-31d95ef20f3b")
+synergyMarker = ("Synergy Action Spent", "c16f45b5-475c-4372-acb8-42da0a189bcc")
 
 def onTableLoad():
   global debugMode
@@ -16,11 +18,13 @@ def endTurn(group, x = 0, y = 0):
   for c in table:
     if c.controller != me:
       continue
-    if c.properties['type'] != 'Ship':
-      continue
     if c.markers[neutralMarker] > 0:
       continue
-    c.moveTo(me.Discard)
+
+    c.markers[actionMarker] = 0;
+    c.markers[synergyMarker] = 0;
+    if c.properties['type'] == 'Ship':
+      c.moveTo(me.Discard)
 
   for c in me.hand:
     c.moveTo(me.Discard)
@@ -30,6 +34,8 @@ def endTurn(group, x = 0, y = 0):
 
   if len(players) > 1:
     players[1].setActivePlayer()
+
+  cardsPlayedThisTurn = 0
 
 def setup(group, x = 0, y = 0):
   mute()
@@ -85,6 +91,7 @@ def playCard(card, x = 0, y = 0):
     whisper('It is not your turn')
     return
   card.moveToTable(-300 + cardsPlayedThisTurn * 100, 150)
+  cardsPlayedThisTurn += 1
   notify('{} plays {}'.format(me, card))
 
 def drawCard(group, count=None):
@@ -102,10 +109,49 @@ def drawCard(group, count=None):
 
 def discard(card, x = 0, y = 0):
   mute()
+  if card.markers[neutralMarker]:
+    return
   card.moveTo(me.Discard);
   notify('{} moves {} to their discard'.format(me, card))
 
 def scrap(card, x = 0, y = 0):
   mute()
+  if card.markers[neutralMarker]:
+    return
   card.moveTo(shared.Scrap)
   notify("{} scraps {}".format(me, card))
+
+def doubleClick(card, x = 0, y = 0):
+  mute()
+  notify('{} double clicks {}'.format(me, card))
+
+def defaultAction(card, x = 0, y = 0):
+  mute()
+  if card.markers[neutralMarker]:
+    return
+  if card.markers[actionMarker] > 0:
+    return
+  actionText = card.properties['Action']
+  if len(actionText) > 0:
+    card.markers[actionMarker] = 1
+    notify("{} takes action on {}: {}".format(me, card, actionText))
+
+def synergyAction(card, x = 0, y = 0):
+  mute()
+  if card.markers[neutralMarker]:
+    return
+  if card.markers[synergyMarker] > 0:
+    return
+  actionText = card.properties['SynergyAction']
+  if len(actionText) > 0:
+    card.markers[synergyMarker] = 1
+    notify("{} takes synergy action on {}: {}".format(me, card, actionText))
+
+def scrapAction(card, x = 0, y = 0):
+  mute()
+  if card.markers[neutralMarker]:
+    return
+  actionText = card.properties['ScrapAction']
+  if len(actionText) > 0:
+    notify("{} takes scrap action on {}: {}".format(me, card, actionText))
+    scrap(card, x, y)
