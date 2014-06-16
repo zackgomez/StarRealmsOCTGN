@@ -35,6 +35,7 @@ def endTurn(group, x = 0, y = 0):
   if len(players) > 1:
     players[1].setActivePlayer()
 
+  global cardsPlayedThisTurn
   cardsPlayedThisTurn = 0
 
 def setup(group, x = 0, y = 0):
@@ -91,6 +92,12 @@ def playCard(card, x = 0, y = 0):
   card.moveToTable(-300 + cardsPlayedThisTurn * 100, 150)
   cardsPlayedThisTurn += 1
   notify('{} plays {}'.format(me, card))
+  if card.properties['Type'] == 'Base':
+    card.orientation = Rot90
+  elif card.properties['Type'] == 'Ship':
+    defaultAction(card)
+  else:
+    whisper('Error: unknown card type {}'.format(card.properties['Type']))
 
 def drawCard(group, count=None):
   mute()
@@ -121,7 +128,17 @@ def scrap(card, x = 0, y = 0):
 
 def doubleClick(card, x = 0, y = 0):
   mute()
-  notify('{} double clicks {}'.format(me, card))
+  if card.markers[neutralMarker]:
+    buyTradeCard(card, x, y)
+  elif card.controller != me:
+    whisper('that card belongs to another player')
+    return
+  elif card.markers[actionMarker] == 0 and len(card.properties['Action']) > 0:
+    defaultAction(card, x, y)
+  elif card.markers[actionMarker] == 1 and len(card.properties['SynergyAction']) > 0:
+    synergyAction(card, x, y)
+  else:
+    return
 
 def defaultAction(card, x = 0, y = 0):
   mute()
@@ -168,6 +185,7 @@ def scrapTradeCard(card, x = 0, y = 0):
   if card.markers[neutralMarker] != 1:
     whisper('that card is not a trade card')
     return
+
   notify("{} scraps trade card {}".format(me, card))
   cardX, cardY = card.position
   scrap(card, x, y)
@@ -178,9 +196,10 @@ def buyTradeCard(card, x = 0, y = 0):
   if card.markers[neutralMarker] != 1:
     whisper('that card is not a trade card')
     return
-  cost = card.properties['Cost']
+
+  cost = int(card.properties['Cost'])
   notify('{} purchased card {} for {}'.format(me, card, cost))
-  me.counters['Trade'] -= cost
+  me.counters['Trade'].value -= cost
   cardX, cardY = card.position
   card.moveTo(me.Discard)
 
