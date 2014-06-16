@@ -2,19 +2,69 @@
 <templates>
   <blocks>
     <block type="text" id="title">
-      <location x="99" y="28" />
+      <location x="10" y="10" />
       <text color="#000000" size="30" />
       <border color="#000000" size="2" />
-      <wordwrap height="31" width="349" align="center" shrinktofit="True" />
+      <!-- wordwrap height="31" width="349" align="center" shrinktofit="True" /-->
     </block>
+
+    <block type="text" id="cost">
+      <location x="270" y="10" />
+      <text color="#000000" size="30" />
+      <border color="#000000" size="2" />
+    </block>
+
+    <block type="text" id="faction">
+      <location x="10" y="250" />
+      <text color="#000000" size="25" />
+      <border color="#000000" size="2" />
+    </block>
+
+    <block type="text" id="action">
+      <location x="45" y="300" />
+      <text color="#111111" size="20" />
+      <border color="#000000" size="2" />
+      <wordwrap height="31" width="349" shrinktofit="False" />
+    </block>
+    <block type="text" id="synergyAction">
+      <location x="45" y="330" />
+      <text color="#111111" size="20" />
+      <border color="#000000" size="2" />
+      <wordwrap height="31" width="349" shrinktofit="False" />
+    </block>
+    <block type="text" id="scrapAction">
+      <location x="45" y="360" />
+      <text color="#111111" size="20" />
+      <border color="#000000" size="2" />
+      <wordwrap height="31" width="349" shrinktofit="False" />
+    </block>
+
+    <!-- TODO
+    <block type="text" id="Armor">
+      <location x="60" y="360" />
+      <text color="#111111" size="20" />
+      <border color="#000000" size="2" />
+    </block>
+    <block type="text" id="Protect">
+      <location x="60" y="360" />
+      <text color="#111111" size="20" />
+      <border color="#000000" size="2" />
+    </block>
+    -->
   </blocks>
 
   <template src="cards/front.jpg" default="True">
     <matches>
-      <match name="Type" value="Ship"/>
+      <match name="Type" value="Ship" />
     </matches>
     <textblocks>
       <link block="title"><property name="Name" /></link>
+      <link block="cost"><property name="Cost" /></link>
+      <link block="faction"><property name="Faction" /></link>
+
+      <link block="action"><property name="Action" /></link>
+      <link block="synergyAction"><property name="SynergyAction" /></link>
+      <link block="scrapAction"><property name="ScrapAction" /></link>
     </textblocks>
   </template>
 </templates>
