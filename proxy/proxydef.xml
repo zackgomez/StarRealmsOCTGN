@@ -1,70 +1,119 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <templates>
   <blocks>
-    <block type="text" id="title">
-      <location x="10" y="10" />
+    <block type="text" id="shipTitle">
+      <location x="0" y="10" />
+      <text color="#FFFFFF" size="24" />
+      <border color="#000000" size="2" />
+      <wordwrap height="31" width="250" align="center" shrinktofit="True" />
+    </block>
+    <block type="text" id="shipFaction">
+      <location x="0" y="35" />
+      <text color="#FFFFFF" size="14" />
+      <border color="#000000" size="2" />
+      <wordwrap height="31" width="250" align="center" shrinktofit="True" />
+    </block>
+    <block type="text" id="shipCost">
+      <location x="210" y="10" />
       <text color="#000000" size="30" />
+      <border color="#FFFFFF" size="2" />
+    </block>
+    <block type="text" id="shipAction">
+      <location x="45" y="240" />
+      <text color="#EEEEEE" size="13" />
       <border color="#000000" size="2" />
-      <!-- wordwrap height="31" width="349" align="center" shrinktofit="True" /-->
+      <wordwrap height="120" width="204" shrinktofit="False" />
+    </block>
+    <block type="text" id="shipSynergyAction">
+      <location x="45" y="270" />
+      <text color="#EEEEEE" size="13" />
+      <border color="#000000" size="2" />
+      <wordwrap height="120" width="204" shrinktofit="False" />
+    </block>
+    <block type="text" id="shipScrapAction">
+      <location x="45" y="300" />
+      <text color="#EEEEEE" size="13" />
+      <border color="#000000" size="2" />
+      <wordwrap height="60" width="204" shrinktofit="False" />
     </block>
 
-    <block type="text" id="cost">
-      <location x="270" y="10" />
+    <block type="text" id="baseTitle">
+      <location x="10" y="340" rotate="270" />
+      <text color="#FFFFFF" size="24" />
+      <border color="#000000" size="2" />
+      <wordwrap height="31" width="290" align="center" shrinktofit="True" />
+    </block>
+    <block type="text" id="baseFaction">
+      <location x="35" y="340" rotate="270" />
+      <text color="#FFFFFF" size="14" />
+      <border color="#000000" size="2" />
+      <wordwrap height="31" width="290" align="center" shrinktofit="True" />
+    </block>
+    <block type="text" id="baseCost">
+      <location x="10" y="45" rotate="270" />
       <text color="#000000" size="30" />
+      <border color="#FFFFFF" size="2" />
+    </block>
+    <block type="text" id="baseAction">
+      <location x="150" y="320" rotate="270" />
+      <text color="#EEEEEE" size="13" />
+      <border color="#000000" size="2" />
+      <wordwrap height="110" width="320" shrinktofit="False" />
+    </block>
+    <block type="text" id="baseSynergyAction">
+      <location x="180" y="320" rotate="270" />
+      <text color="#EEEEEE" size="13" />
+      <border color="#000000" size="2" />
+      <wordwrap height="60" width="320" shrinktofit="False" />
+    </block>
+    <block type="text" id="baseScrapAction">
+      <location x="210" y="320" rotate="270" />
+      <text color="#EEEEEE" size="13" />
+      <border color="#000000" size="2" />
+      <wordwrap height="31" width="320" shrinktofit="False" />
+    </block>
+    <block type="text" id="baseArmor">
+      <location x="210" y="40" rotate="270" />
+      <text color="#000000" size="20" />
       <border color="#000000" size="2" />
     </block>
-
-    <block type="text" id="faction">
-      <location x="10" y="250" />
-      <text color="#000000" size="24" />
+    <block type="text" id="baseProtect">
+      <location x="185" y="60" rotate="270" />
+      <text color="#FFFFFF" size="15" />
       <border color="#000000" size="2" />
     </block>
-
-    <block type="text" id="action">
-      <location x="45" y="290" />
-      <text color="#111111" size="17" />
-      <border color="#000000" size="2" />
-      <wordwrap height="110" width="270" shrinktofit="False" />
-    </block>
-    <block type="text" id="synergyAction">
-      <location x="45" y="330" />
-      <text color="#111111" size="17" />
-      <border color="#000000" size="2" />
-      <wordwrap height="60" width="270" shrinktofit="False" />
-    </block>
-    <block type="text" id="scrapAction">
-      <location x="45" y="370" />
-      <text color="#111111" size="17" />
-      <border color="#000000" size="2" />
-      <wordwrap height="31" width="270" shrinktofit="False" />
-    </block>
-
-    <!-- TODO
-    <block type="text" id="Armor">
-      <location x="60" y="360" />
-      <text color="#111111" size="20" />
-      <border color="#000000" size="2" />
-    </block>
-    <block type="text" id="Protect">
-      <location x="60" y="360" />
-      <text color="#111111" size="20" />
-      <border color="#000000" size="2" />
-    </block>
-    -->
   </blocks>
 
-  <template src="cards/front.jpg" default="True">
+  <template src="cards/ship.png" default="True">
     <matches>
       <match name="Type" value="Ship" />
     </matches>
     <textblocks>
-      <link block="title"><property name="Name" /></link>
-      <link block="cost"><property name="Cost" /></link>
-      <link block="faction"><property name="Faction" /></link>
+      <link block="shipTitle"><property name="Name" /></link>
+      <link block="shipCost"><property name="Cost" /></link>
+      <link block="shipFaction"><property name="Faction" /></link>
 
-      <link block="action"><property name="Action" /></link>
-      <link block="synergyAction"><property name="SynergyAction" /></link>
-      <link block="scrapAction"><property name="ScrapAction" /></link>
+      <link block="shipAction"><property name="Action" /></link>
+      <link block="shipSynergyAction"><property name="SynergyAction" /></link>
+      <link block="shipScrapAction"><property name="ScrapAction" /></link>
+    </textblocks>
+  </template>
+
+  <template src="cards/base.png">
+    <matches>
+      <match name="Type" value="Base" />
+    </matches>
+    <textblocks>
+      <link block="baseTitle"><property name="Name" /></link>
+      <link block="baseCost"><property name="Cost" /></link>
+      <link block="baseFaction"><property name="Faction" /></link>
+
+      <link block="baseAction"><property name="Action" /></link>
+      <link block="baseSynergyAction"><property name="SynergyAction" /></link>
+      <link block="baseScrapAction"><property name="ScrapAction" /></link>
+
+      <link block="baseArmor"><property name="BaseArmor" /></link>
+      <link block="baseProtect"><property name="BaseProtect" /></link>
     </textblocks>
   </template>
 </templates>
