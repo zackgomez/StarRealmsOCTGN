@@ -2,17 +2,17 @@
 <game
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-  name="StarRealms"
+  name="Star Realms"
   id="d250a313-c423-45e3-9c72-3182db31d925"
   octgnVersion="3.1.0.0"
-  version="1.0.0.160"
+  version="1.0.0.162"
   markersize="20"
   setsurl="http://zackgomez.com/octgn/starrealms/sets"
   gameurl="http://zackgomez.com/octgn/starrealms"
-  authors="Zack"
+  authors="starruler"
   iconurl="http://zackgomez.com/octgn/starrealms.png"
-  description="Star Realms"
-  tags=""
+  description="Star Realms is a two player deckbuilding game."
+  tags="deckbuilding"
   >
   <scripts>
     <script src="scripts/actions.py" />
@@ -38,7 +38,7 @@
   <globalvariables>
   </globalvariables>
 
-  <card cornerRadius="3" height="80" width="60" front="cards/front.jpg" back="cards/back.png">
+  <card cornerRadius="3" height="100" width="75" front="cards/front.jpg" back="cards/back.png">
     <property name="Type" type="String" hidden="False" textKind="Enum" />
     <property name="Faction" type="String" hidden="False" textKind="Enum" />
     <property name="Cost" type="Integer" hidden="False" />
@@ -46,7 +46,7 @@
     <property name="SynergyAction" type="String" hidden="False" />
     <property name="ScrapAction" type="String" hidden="False" />
     <property name="BaseArmor" type="Integer" hidden="False" />
-    <property name="BaseProtect" type="String" hidden="False" />
+    <property name="BaseProtect" type="String" hidden="False" textKind="Enum" />
   </card>
 
   <table name="Table" visibility="undefined" ordered="False" width="1300" height="808" board="proxy/blank.png" boardPosition="-650,-370,1300,808" background="background/background.jpg" backgroundStyle="uniformToFill">
@@ -63,7 +63,7 @@
     <groupaction menu="Set Up Game" execute="setup" />
   </table>
 
-  <player summary="Authority: {#Authority} Trade: {#Trade} Combat: {#Combat}">
+  <player summary="Authority: {#Authority}">
     <counter name="Authority" icon="Counters/Authority.png" default="50" reset="True" />
     <counter name="Trade" icon="Counters/Trade.png" default="0" reset="True" />
     <counter name="Combat" icon="Counters/Combat.png" default="0" reset="True" />

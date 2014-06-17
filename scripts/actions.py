@@ -5,9 +5,14 @@ cardPlayingX = 0
 cardPlayingY = 0
 cardPlayingXOffset = 0
 
+explorerPileX = 0
+explorerPileY = 0
+
 neutralMarker = ("Owned By Table", "fabd2965-929e-4ee9-b69c-e278e3cd4098")
 actionMarker = ("Action Spent", "2cccc5d7-76e9-4c98-a37b-31d95ef20f3b")
 synergyMarker = ("Synergy Action Spent", "c16f45b5-475c-4372-acb8-42da0a189bcc")
+
+explorerModel = '9abd52a8-7310-4527-9234-c2de2ce4c5cc'
 
 def onTableLoad():
   global debugMode
@@ -23,6 +28,9 @@ def resetGame():
     cardPlayingX *= -1
     cardPlayingY *= -1
     cardPlayingXOffset *= -1
+  global explorerPileX, explorerPileY
+  explorerPileX = -300
+  explorerPileY = 0
 
 def endTurn(group, x = 0, y = 0):
   mute()
@@ -90,7 +98,7 @@ def setup(group, x = 0, y = 0):
   # set out explorers
   whisper('Setting out Explorer pile')
   for c in shared.piles['Explorers']:
-    c.moveToTable(-300, 0)
+    c.moveToTable(explorerPileX, explorerPileY)
     c.markers[neutralMarker] = 1
 
   # deal out starting cards
@@ -159,8 +167,7 @@ def scrap(card, x = 0, y = 0):
   mute()
   if card.markers[neutralMarker]:
     return
-  card.moveTo(shared.Scrap)
-  notify("{} scraps {}".format(me, card))
+  scrapImpl(card)
 
 def doubleClick(card, x = 0, y = 0):
   mute()
@@ -205,7 +212,7 @@ def scrapAction(card, x = 0, y = 0):
   actionText = card.properties['ScrapAction']
   if len(actionText) > 0:
     notify("{} takes scrap action on {}: {}".format(me, card, actionText))
-    scrap(card, x, y)
+    scrapImpl(card)
 
 def replaceTradeCard(x, y):
   if len(shared.Deck) == 0:
@@ -219,18 +226,21 @@ def replaceTradeCard(x, y):
 def scrapTradeCard(card, x = 0, y = 0):
   mute()
   if card.markers[neutralMarker] != 1:
-    whisper('that card is not a trade card')
+    whisper('That card is not a trade card.')
+    return
+  if card.model == explorerModel:
+    whisper('Explorers are not in the trade row.')
     return
 
   notify("{} scraps trade card {}".format(me, card))
   cardX, cardY = card.position
-  scrap(card, x, y)
+  scrapImpl(card)
   replaceTradeCard(cardX, cardY)
 
 def buyTradeCard(card, x = 0, y = 0):
   mute()
   if card.markers[neutralMarker] != 1:
-    whisper('that card is not a trade card')
+    whisper('That card is not a trade card.')
     return
 
   cost = int(card.properties['Cost'])
@@ -239,4 +249,20 @@ def buyTradeCard(card, x = 0, y = 0):
   cardX, cardY = card.position
   card.moveTo(me.Discard)
 
-  replaceTradeCard(cardX, cardY)
+  if card.model != explorerModel:
+    replaceTradeCard(cardX, cardY)
+
+def scrapImpl(card):
+  removeMarkers(card)
+  if card.model == explorerModel:
+    card.moveToTable(explorerPileX, explorerPileY)
+    card.markers[neutralMarker] = 1
+    notify('{} returns {} to the supply'.format(me, card))
+  else:
+    card.moveTo(shared.Scrap)
+    notify('{} scraps {}'.format(me, card))
+
+def removeMarkers(card):
+  card.markers[neutralMarker] = 0
+  card.markers[actionMarker] = 0
+  card.markers[synergyMarker] = 0
