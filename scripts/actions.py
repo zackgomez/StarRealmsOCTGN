@@ -1,6 +1,10 @@
 debugMode = False
 cardsPlayedThisTurn = 0
 
+cardPlayingX = 0
+cardPlayingY = 0
+cardPlayingXOffset = 0
+
 neutralMarker = ("Owned By Table", "fabd2965-929e-4ee9-b69c-e278e3cd4098")
 actionMarker = ("Action Spent", "2cccc5d7-76e9-4c98-a37b-31d95ef20f3b")
 synergyMarker = ("Synergy Action Spent", "c16f45b5-475c-4372-acb8-42da0a189bcc")
@@ -10,10 +14,26 @@ def onTableLoad():
   debugMode = len(players) == 1
 
 def resetGame():
-  notify('Game reset.  me: {}'.format(me))
+  whisper('Inverted? {}'.format(me.hasInvertedTable()))
+  global cardPlayingX, cardPlayingY, cardPlayingXOffset
+  cardPlayingX = -300
+  cardPlayingXOffset = 100
+  cardPlayingY = 150
+  if me.hasInvertedTable():
+    cardPlayingX *= -1
+    cardPlayingY *= -1
+    cardPlayingXOffset *= -1
 
 def endTurn(group, x = 0, y = 0):
   mute()
+  if not me.isActivePlayer:
+    whisper('It is not your turn')
+    return
+
+  global cardsPlayedThisTurn
+  cardsPlayedThisTurn = 0
+  me.counters['Trade'].value = 0
+  me.counters['Combat'].value = 0
 
   for c in table:
     if c.controller != me:
@@ -32,11 +52,16 @@ def endTurn(group, x = 0, y = 0):
   for i in xrange(5):
     drawCard(me.hand)
 
+  activePlayer = me
   if len(players) > 1:
-    players[1].setActivePlayer()
+    activePlayer = players[1]
 
-  global cardsPlayedThisTurn
-  cardsPlayedThisTurn = 0
+  activePlayer.setActivePlayer()
+
+  for c in table:
+    if c.markers[neutralMarker] > 0:
+      c.setController(activePlayer)
+  shared.Deck.setController(activePlayer)
 
 def setup(group, x = 0, y = 0):
   mute()
@@ -55,6 +80,7 @@ def setup(group, x = 0, y = 0):
     return
 
   # deal out trade row
+  whisper('Setting out Trade Row')
   shared.Deck.shuffle()
   x = -100
   for i in xrange(5):
@@ -62,26 +88,36 @@ def setup(group, x = 0, y = 0):
     x += 100
 
   # set out explorers
+  whisper('Setting out Explorer pile')
   for c in shared.piles['Explorers']:
     c.moveToTable(-300, 0)
     c.markers[neutralMarker] = 1
 
   # deal out starting cards
+  whisper('Dealing out starting decks')
   while len(starting_cards) > 0:
     for player in players:
       for c in starting_cards.top(1): c.moveTo(player.Deck)
 
   startingPlayer = me
 
+  whisper('Dealing starting hands')
   for player in players:
-    player.Deck.shuffle()
     if player == startingPlayer:
       cardCount = 3 
     else:
       cardCount = 5;
-    for c in player.Deck.top(cardCount): c.moveTo(player.hand)
-  notify('Dealt 3 cards to {} and 5 cards to everyone else'.format(startingPlayer.name))
+    remoteCall(player, 'remoteDrawStartingHand', [cardCount])
+  update()
+
+  notify('{} plays first'.format(startingPlayer))
   startingPlayer.setActivePlayer()
+
+def remoteDrawStartingHand(numCards):
+  mute()
+  me.Deck.shuffle()
+  for c in me.Deck.top(numCards): c.moveTo(me.hand)
+  notify('{} drew {} cards for as their starting hand'.format(me, numCards))
 
 def playCard(card, x = 0, y = 0):
   mute()
@@ -89,7 +125,7 @@ def playCard(card, x = 0, y = 0):
   if not me.isActivePlayer:
     whisper('It is not your turn')
     return
-  card.moveToTable(-300 + cardsPlayedThisTurn * 100, 150)
+  card.moveToTable(cardPlayingX + cardPlayingXOffset * cardsPlayedThisTurn, cardPlayingY)
   cardsPlayedThisTurn += 1
   notify('{} plays {}'.format(me, card))
   if card.properties['Type'] == 'Base':
