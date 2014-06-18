@@ -14,7 +14,7 @@
       <property name="SynergyAction" value="" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Scout" id="24d3d7a7-ba11-47c4-9b43-43448cc23920">
       <property name="Faction" value="None" />
@@ -24,7 +24,7 @@
       <property name="SynergyAction" value="" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Explorer" id="9abd52a8-7310-4527-9234-c2de2ce4c5cc">
       <property name="Faction" value="None" />
@@ -34,7 +34,7 @@
       <property name="SynergyAction" value="" />
       <property name="ScrapAction" value="2 Combat" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
 
     <card name="Federation Shuttle" id="d9a3bd5f-289d-449e-8ee1-401c8b5b924d">
@@ -45,7 +45,7 @@
       <property name="SynergyAction" value="4 Authority" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Cutter" id="e2c64a28-7f6f-41aa-ad0c-405f050666f2">
       <property name="Faction" value="Trade Federation" />
@@ -55,7 +55,7 @@
       <property name="SynergyAction" value="4 Combat" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Embassy Yacht" id="bb645750-2ce5-4eef-af68-5a5d89bdee15">
       <property name="Faction" value="Trade Federation" />
@@ -65,7 +65,7 @@
       <property name="SynergyAction" value="" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Freighter" id="ee73c7e4-c8a2-45b4-aa6b-4344a3a7c611">
       <property name="Faction" value="Trade Federation" />
@@ -75,7 +75,7 @@
       <property name="SynergyAction" value="You may put the next ship you acquire this turn on top of your deck" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Trade Escort" id="7da2860b-c133-4c2b-b32f-bf032ca1dc75">
       <property name="Faction" value="Trade Federation" />
@@ -85,7 +85,7 @@
       <property name="SynergyAction" value="Draw a card" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Flagship" id="87314e6d-ac1e-4adf-8e6a-8c3a045904b8">
       <property name="Faction" value="Trade Federation" />
@@ -95,7 +95,7 @@
       <property name="SynergyAction" value="5 Authority" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Command Ship" id="d8533e2b-b433-4d51-8b92-6aad58a9e0e4">
       <property name="Faction" value="Trade Federation" />
@@ -105,7 +105,7 @@
       <property name="SynergyAction" value="You may destroy target base" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Defense Center" id="da40c8ae-5a7a-480e-b1a9-b0b8ab0cc662">
       <property name="Faction" value="Trade Federation" />
@@ -115,7 +115,7 @@
       <property name="SynergyAction" value="2 Combat" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="5" />
-      <property name="BaseProtect" value="True" />
+      <property name="BaseProtect" value="Protect" />
     </card>
     <card name="Trading Post" id="170d9015-3466-46b5-8550-b70371f79e7a">
       <property name="Faction" value="Trade Federation" />
@@ -125,7 +125,7 @@
       <property name="SynergyAction" value="" />
       <property name="ScrapAction" value="3 Combat" />
       <property name="BaseArmor" value="4" />
-      <property name="BaseProtect" value="True" />
+      <property name="BaseProtect" value="Protect" />
     </card>
     <card name="Barter World" id="e6e14035-3885-46af-8443-e662b0fc602d">
       <property name="Faction" value="Trade Federation" />
@@ -135,7 +135,7 @@
       <property name="SynergyAction" value="" />
       <property name="ScrapAction" value="5 Combat" />
       <property name="BaseArmor" value="4" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Defense Center" id="86a887a6-1a7d-4fe3-849b-c4c128b39379">
       <property name="Faction" value="Trade Federation" />
@@ -145,7 +145,7 @@
       <property name="SynergyAction" value="2 Combat" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="5" />
-      <property name="BaseProtect" value="True" />
+      <property name="BaseProtect" value="Protect" />
     </card>
     <card name="Port of Call" id="1188df6d-514f-4e48-a409-38c964ee96bd">
       <property name="Faction" value="Trade Federation" />
@@ -155,7 +155,7 @@
       <property name="SynergyAction" value="" />
       <property name="ScrapAction" value="Draw a card; You may destroy target base" />
       <property name="BaseArmor" value="6" />
-      <property name="BaseProtect" value="True" />
+      <property name="BaseProtect" value="Protect" />
     </card>
     <card name="Central office" id="079d7451-0264-4c6f-9b82-d03cb22f4a72">
       <property name="Faction" value="Trade Federation" />
@@ -165,7 +165,7 @@
       <property name="SynergyAction" value="Draw a card" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="6" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
 
     <card name="Trade Bot" id="4b6b1202-4495-4e7d-8396-279c59c98920">
@@ -176,7 +176,7 @@
       <property name="SynergyAction" value="2 Combat" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Missile Bot" id="e796e344-13cd-4db2-8c0c-a7d8ef681ab7">
       <property name="Faction" value="Machine Cult" />
@@ -186,7 +186,7 @@
       <property name="SynergyAction" value="2 Combat" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Supply Bot" id="c5fc9c5b-cebd-41ec-b8c2-e9ec21044af3">
       <property name="Faction" value="Machine Cult" />
@@ -196,7 +196,7 @@
       <property name="SynergyAction" value="2 Combat" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Patrol Mech" id="6c36d894-e31f-4dea-bb2c-53f51f402eda">
       <property name="Faction" value="Machine Cult" />
@@ -206,7 +206,7 @@
       <property name="SynergyAction" value="You may scrap a card from your hand or discard pile" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Stealth Needle" id="6a75e65c-8bcd-4c58-928a-129561e1916e">
       <property name="Faction" value="Machine Cult" />
@@ -216,7 +216,7 @@
       <property name="SynergyAction" value="" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Battle Mech" id="877e9caa-db13-45eb-8c31-ca0d265ab9ac">
       <property name="Faction" value="Machine Cult" />
@@ -226,7 +226,7 @@
       <property name="SynergyAction" value="Draw a card" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Missile Mech" id="23783150-32ab-4d1c-957a-6c57e0bfef41">
       <property name="Faction" value="Machine Cult" />
@@ -236,7 +236,7 @@
       <property name="SynergyAction" value="Draw a card" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Battle Station" id="907ac658-0a79-4428-99f7-cfedfe2f9a08">
       <property name="Faction" value="Machine Cult" />
@@ -246,7 +246,7 @@
       <property name="SynergyAction" value="" />
       <property name="ScrapAction" value="5 Combat" />
       <property name="BaseArmor" value="5" />
-      <property name="BaseProtect" value="True" />
+      <property name="BaseProtect" value="Protect" />
     </card>
     <card name="Mech World" id="3bf3bd81-5230-4deb-ab3b-4d31c60a07a8">
       <property name="Faction" value="Machine Cult" />
@@ -256,7 +256,7 @@
       <property name="SynergyAction" value="" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="6" />
-      <property name="BaseProtect" value="True" />
+      <property name="BaseProtect" value="Protect" />
     </card>
     <card name="Junkyard" id="5464e13a-d851-4433-8c45-9f7a412da659">
       <property name="Faction" value="Machine Cult" />
@@ -266,7 +266,7 @@
       <property name="SynergyAction" value="" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="5" />
-      <property name="BaseProtect" value="True" />
+      <property name="BaseProtect" value="Protect" />
     </card>
     <card name="Machine Base" id="b92f95aa-d00d-432c-825a-4c9528eaa467">
       <property name="Faction" value="Machine Cult" />
@@ -276,7 +276,7 @@
       <property name="SynergyAction" value="" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="6" />
-      <property name="BaseProtect" value="True" />
+      <property name="BaseProtect" value="Protect" />
     </card>
     <card name="Brain World" id="49baf375-d20c-4d67-87d5-ac2d56a34f53">
       <property name="Faction" value="Machine Cult" />
@@ -286,7 +286,7 @@
       <property name="SynergyAction" value="" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="6" />
-      <property name="BaseProtect" value="True" />
+      <property name="BaseProtect" value="Protect" />
     </card>
 
     <card name="Imperial Fighter" id="972b66cf-c60b-4231-8150-cd062daa288f">
@@ -297,7 +297,7 @@
       <property name="SynergyAction" value="2 Combat" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Corvette" id="7a8b99e1-db39-4a95-af73-61cb31bb0446">
       <property name="Faction" value="Star Empire" />
@@ -307,7 +307,7 @@
       <property name="SynergyAction" value="2 Combat" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Imperial Frigate" id="b695bf28-7e47-4758-b839-985e6270f91e">
       <property name="Faction" value="Star Empire" />
@@ -317,7 +317,7 @@
       <property name="SynergyAction" value="2 Combat" />
       <property name="ScrapAction" value="Draw a card" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Survey Ship" id="4b9bd4bf-0212-49f0-a1d1-6b506b78a6e7">
       <property name="Faction" value="Star Empire" />
@@ -327,7 +327,7 @@
       <property name="SynergyAction" value="" />
       <property name="ScrapAction" value="Target opponent dicards a card" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Battlecruiser" id="131f199e-27e0-4a15-81a6-83e1a4e72745">
       <property name="Faction" value="Star Empire" />
@@ -337,7 +337,7 @@
       <property name="SynergyAction" value="Target opponent discards a card" />
       <property name="ScrapAction" value="Draw a card; You may destroy target base" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Dreadnaugh" id="1816eab3-eb3d-4dfd-bed5-70bc84cdd8e8">
       <property name="Faction" value="Star Empire" />
@@ -347,7 +347,7 @@
       <property name="SynergyAction" value="" />
       <property name="ScrapAction" value="5 Combat" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Space Station" id="0ed44101-aee8-4185-8835-2058d24d1bab">
       <property name="Faction" value="Star Empire" />
@@ -357,7 +357,7 @@
       <property name="SynergyAction" value="2 Combat" />
       <property name="ScrapAction" value="4 Trade" />
       <property name="BaseArmor" value="4" />
-      <property name="BaseProtect" value="True" />
+      <property name="BaseProtect" value="Protect" />
     </card>
     <card name="Recycling Station" id="9a98f2d7-8435-4019-bdb2-4f45148ac800">
       <property name="Faction" value="Star Empire" />
@@ -367,7 +367,7 @@
       <property name="SynergyAction" value="" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="4" />
-      <property name="BaseProtect" value="True" />
+      <property name="BaseProtect" value="Protect" />
     </card>
     <card name="War World" id="5386a33a-864a-47f1-8971-78bd5e998f7c">
       <property name="Faction" value="Star Empire" />
@@ -377,7 +377,7 @@
       <property name="SynergyAction" value="4 Combat" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="4" />
-      <property name="BaseProtect" value="True" />
+      <property name="BaseProtect" value="Protect" />
     </card>
     <card name="Royal Redoubt" id="a37e2bc3-d8ca-4701-9f4c-44f35b71f622">
       <property name="Faction" value="Star Empire" />
@@ -387,7 +387,7 @@
       <property name="SynergyAction" value="Target opponent discards a card" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="6" />
-      <property name="BaseProtect" value="True" />
+      <property name="BaseProtect" value="Protect" />
     </card>
     <card name="Fleet HQ" id="ae71d0ed-52aa-4cba-becd-567e7b90e20e">
       <property name="Faction" value="Star Empire" />
@@ -397,7 +397,7 @@
       <property name="SynergyAction" value="" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="8" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
 
     <card name="Blob Fighter" id="2cccc5d7-76e9-4c98-a37b-31d95ef20f3b">
@@ -408,7 +408,7 @@
       <property name="SynergyAction" value="Draw a card." />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Trade Pod" id="8547d559-c6e7-4b7b-996d-8644aae8991b">
       <property name="Faction" value="Blob" />
@@ -418,7 +418,7 @@
       <property name="SynergyAction" value="2 Combat" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Battle Pod" id="a2c67ee9-7230-463e-bc3d-6a4f4ee480a6">
       <property name="Faction" value="Blob" />
@@ -428,7 +428,7 @@
       <property name="SynergyAction" value="2 Combat" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Ram" id="144b7265-70a6-4b03-9026-21b7f147a644">
       <property name="Faction" value="Blob" />
@@ -438,7 +438,7 @@
       <property name="SynergyAction" value="2 Combat" />
       <property name="ScrapAction" value="3 Trade" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Blob Destroyer" id="c32848ab-efb5-4f8c-8cf1-d747fa68e198">
       <property name="Faction" value="Blob" />
@@ -448,7 +448,7 @@
       <property name="SynergyAction" value="You may destroy target base and/or scrap a card in the trade row" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Battle Blob" id="0ed44101-aee8-4185-8835-2058d24d1bab">
       <property name="Faction" value="Blob" />
@@ -458,7 +458,7 @@
       <property name="SynergyAction" value="Draw a card." />
       <property name="ScrapAction" value="4 Combat" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Blob Carrier" id="70cfe32e-fb4f-47c1-b701-aa5b3f499e9d">
       <property name="Faction" value="Blob" />
@@ -468,7 +468,7 @@
       <property name="SynergyAction" value="Acquire any ship without paying its cost and put it on top of your deck" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Mothership" id="d276b5ba-90f3-4903-9d79-3519b2e44ee2">
       <property name="Faction" value="Blob" />
@@ -478,7 +478,7 @@
       <property name="SynergyAction" value="Draw a card" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="0" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Blob Wheel" id="9b37492d-ac9e-4e81-9ada-87ee2a485f26">
       <property name="Faction" value="Blob" />
@@ -488,7 +488,7 @@
       <property name="SynergyAction" value="" />
       <property name="ScrapAction" value="3 Trade" />
       <property name="BaseArmor" value="5" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="The Hive" id="9b37492d-ac9e-4e81-9ada-87ee2a485f26">
       <property name="Faction" value="Blob" />
@@ -498,7 +498,7 @@
       <property name="SynergyAction" value="Draw a card" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="5" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
     <card name="Blob World" id="54fa2889-b120-4936-9619-c1354a7d773d">
       <property name="Faction" value="Blob" />
@@ -508,7 +508,7 @@
       <property name="SynergyAction" value="" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="7" />
-      <property name="BaseProtect" value="False" />
+      <property name="BaseProtect" value="" />
     </card>
   </cards>
 </set>
