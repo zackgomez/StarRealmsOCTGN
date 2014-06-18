@@ -40,6 +40,7 @@ def endTurn(group, x = 0, y = 0):
 
   global cardsPlayedThisTurn
   cardsPlayedThisTurn = 0
+  notify('{} ends turn with Trade: {} Combat: {}'.format(me, me.counters['Trade'].value, me.counters['Combat'].value));
   me.counters['Trade'].value = 0
   me.counters['Combat'].value = 0
 
@@ -70,6 +71,7 @@ def endTurn(group, x = 0, y = 0):
     if c.markers[neutralMarker] > 0:
       c.setController(activePlayer)
   shared.Deck.setController(activePlayer)
+  shared.Scrap.setController(activePlayer)
 
 def setup(group, x = 0, y = 0):
   mute()
@@ -221,6 +223,7 @@ def replaceTradeCard(x, y):
   for c in shared.Deck.top(1):
     c.moveToTable(x, y)
     c.markers[neutralMarker] = 1
+    update()
     notify('Added {} to trade row'.format(c))
 
 def scrapTradeCard(card, x = 0, y = 0):
@@ -257,9 +260,11 @@ def scrapImpl(card):
   if card.model == explorerModel:
     card.moveToTable(explorerPileX, explorerPileY)
     card.markers[neutralMarker] = 1
+    update()
     notify('{} returns {} to the supply'.format(me, card))
   else:
     card.moveTo(shared.Scrap)
+    update()
     notify('{} scraps {}'.format(me, card))
 
 def removeMarkers(card):

@@ -5,7 +5,7 @@
   name="Star Realms"
   id="d250a313-c423-45e3-9c72-3182db31d925"
   octgnVersion="3.1.0.0"
-  version="1.0.0.166"
+  version="1.0.0.167"
   markersize="20"
   setsurl="http://zackgomez.com/octgn/starrealms/sets"
   gameurl="http://zackgomez.com/octgn/starrealms"
@@ -55,6 +55,7 @@
     <cardaction menu="Activate Synergy Action" execute="synergyAction" />
     <cardaction menu="Activate Scrap Action" execute="scrapAction" />
     <cardaction menu="Scrap Card" execute="scrap" />
+    <cardaction menu="Discard Card" execute="discard" />
 
     <cardaction menu="Scrap Trade Card" execute="scrapTradeCard" />
     <cardaction menu="Buy Card" execute="buyTradeCard" />
@@ -76,6 +77,7 @@
     </hand>
 
     <group name="Deck" icon="Groups/Deck.png" height="88" width="63">
+      <groupaction menu="Draw Card" default="True" execute="drawCard" />
       <groupaction menu="Shuffle" execute="shuffle" />
     </group>
 
