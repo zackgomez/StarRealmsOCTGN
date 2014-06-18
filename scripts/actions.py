@@ -14,6 +14,8 @@ synergyMarker = ("Synergy Action Spent", "c16f45b5-475c-4372-acb8-42da0a189bcc")
 
 explorerModel = '9abd52a8-7310-4527-9234-c2de2ce4c5cc'
 
+CARD_HEIGHT = 120
+
 def onTableLoad():
   global debugMode
   debugMode = len(players) == 1
@@ -21,16 +23,19 @@ def onTableLoad():
 def resetGame():
   whisper('Inverted? {}'.format(me.hasInvertedTable()))
   global cardPlayingX, cardPlayingY, cardPlayingXOffset
+  global explorerPileX, explorerPileY
   cardPlayingX = -300
   cardPlayingXOffset = 100
   cardPlayingY = 150
+  explorerPileX = -300
+  explorerPileY = 0
   if me.hasInvertedTable():
     cardPlayingX *= -1
     cardPlayingY *= -1
     cardPlayingXOffset *= -1
-  global explorerPileX, explorerPileY
-  explorerPileX = -300
-  explorerPileY = 0
+
+    explorerPileX *= -1
+    explorerPileY = -CARD_HEIGHT
 
 def endTurn(group, x = 0, y = 0):
   mute()
@@ -61,14 +66,20 @@ def endTurn(group, x = 0, y = 0):
   for i in xrange(5):
     drawCard(me.hand)
 
-  activePlayer = me
-  if len(players) > 1:
-    activePlayer = players[1]
+  if len(players) < 2:
+    return
 
+  activePlayer = players[1]
   activePlayer.setActivePlayer()
 
   for c in table:
     if c.markers[neutralMarker] > 0:
+      cardx, cardy = c.position
+      if activePlayer.hasInvertedTable():
+        cardy = -c.height()
+      else:
+        cardy = 0
+      c.moveToTable(-cardx, cardy)
       c.setController(activePlayer)
   shared.Deck.setController(activePlayer)
   shared.Scrap.setController(activePlayer)
@@ -77,8 +88,8 @@ def setup(group, x = 0, y = 0):
   mute()
 
   # Validation
-  starting_cards = shared.piles['Starting Cards']
-  if len(starting_cards) != 20:
+  startingCards = shared.piles['Starting Cards']
+  if len(startingCards) != 20:
     notify('Not enough cards in the starting cards pile')
     return
   if len(shared.piles['Explorers']) != 10:
@@ -89,13 +100,24 @@ def setup(group, x = 0, y = 0):
     notify('not enough players')
     return
 
+  shared.Deck.setController(me)
+  shared.Scrap.setController(me)
+  shared.piles['Explorers'].setController(me)
+  startingCards.setController(me)
+
   # deal out trade row
   whisper('Setting out Trade Row')
   shared.Deck.shuffle()
   x = -100
+  y = 0
+  xincr = 100
+  if me.hasInvertedTable():
+    x = -x
+    y = -CARD_HEIGHT
+    xincr = -xincr
   for i in xrange(5):
-    replaceTradeCard(x, 0)
-    x += 100
+    replaceTradeCard(x, y)
+    x += xincr
 
   # set out explorers
   whisper('Setting out Explorer pile')
@@ -105,9 +127,9 @@ def setup(group, x = 0, y = 0):
 
   # deal out starting cards
   whisper('Dealing out starting decks')
-  while len(starting_cards) > 0:
+  while len(startingCards) > 0:
     for player in players:
-      for c in starting_cards.top(1): c.moveTo(player.Deck)
+      for c in startingCards.top(1): c.moveTo(player.Deck)
 
   startingPlayer = me
 
@@ -217,6 +239,7 @@ def scrapAction(card, x = 0, y = 0):
     scrapImpl(card)
 
 def replaceTradeCard(x, y):
+  mute()
   if len(shared.Deck) == 0:
     notify('Deck is out of cards')
     return
