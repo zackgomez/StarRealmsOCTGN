@@ -1,9 +1,9 @@
 debugMode = False
-cardsPlayedThisTurn = 0
 
-cardPlayingX = 0
-cardPlayingY = 0
-cardPlayingXOffset = 0
+shipPlayingX = 0
+shipPlayingY = 0
+shipPlayingXOffset = 0
+shipsPlayedThisTurn = 0
 
 explorerPileX = 0
 explorerPileY = 0
@@ -22,20 +22,30 @@ def onTableLoad():
 
 def resetGame():
   whisper('Inverted? {}'.format(me.hasInvertedTable()))
-  global cardPlayingX, cardPlayingY, cardPlayingXOffset
+  global shipPlayingX, shipPlayingY, shipPlayingXOffset
   global explorerPileX, explorerPileY
-  cardPlayingX = -300
-  cardPlayingXOffset = 100
-  cardPlayingY = 150
+  shipPlayingX = -300
+  shipPlayingXOffset = 100
+  shipPlayingY = 150
   explorerPileX = -300
   explorerPileY = 0
   if me.hasInvertedTable():
-    cardPlayingX *= -1
-    cardPlayingY *= -1
-    cardPlayingXOffset *= -1
+    shipPlayingX *= -1
+    shipPlayingY *= -1
+    shipPlayingXOffset *= -1
 
     explorerPileX *= -1
     explorerPileY = -CARD_HEIGHT
+
+def isLocationInCard(x, y, card):
+  cardx, cardy = card.position
+  return x >= cardx and x <= cardx + card.width() and y >= cardy and y <= cardy + card.height()
+
+def cardAtLocation(x, y):
+  for c in table:
+    if isLocationInCard(x, y, c): return c
+
+  return None
 
 def endTurn(group, x = 0, y = 0):
   mute()
@@ -43,8 +53,8 @@ def endTurn(group, x = 0, y = 0):
     whisper('It is not your turn')
     return
 
-  global cardsPlayedThisTurn
-  cardsPlayedThisTurn = 0
+  global shipsPlayedThisTurn
+  shipsPlayedThisTurn = 0
   notify('{} ends turn with Trade: {} Combat: {}'.format(me, me.counters['Trade'].value, me.counters['Combat'].value));
   me.counters['Trade'].value = 0
   me.counters['Combat'].value = 0
@@ -151,18 +161,29 @@ def remoteDrawStartingHand(numCards):
   for c in me.Deck.top(numCards): c.moveTo(me.hand)
   notify('{} drew {} cards for as their starting hand'.format(me, numCards))
 
+def moveBaseToTable(base):
+  sign = -1 if me.hasInvertedTable() else 1
+  baseX = shipPlayingX
+  baseY = shipPlayingY + sign * (base.height() + 1)
+  xincr = sign * base.height() * 1.25
+
+  while cardAtLocation(baseX, baseY) != None:
+    baseX += xincr
+  base.moveToTable(baseX, baseY)
+  base.orientation = Rot90
+
 def playCard(card, x = 0, y = 0):
   mute()
-  global cardsPlayedThisTurn
+  global shipsPlayedThisTurn
   if not me.isActivePlayer:
     whisper('It is not your turn')
     return
-  card.moveToTable(cardPlayingX + cardPlayingXOffset * cardsPlayedThisTurn, cardPlayingY)
-  cardsPlayedThisTurn += 1
   notify('{} plays {}'.format(me, card))
   if card.properties['Type'] == 'Base':
-    card.orientation = Rot90
+    moveBaseToTable(card)
   elif card.properties['Type'] == 'Ship':
+    card.moveToTable(shipPlayingX + shipPlayingXOffset * shipsPlayedThisTurn, shipPlayingY)
+    shipsPlayedThisTurn += 1
     defaultAction(card)
   else:
     whisper('Error: unknown card type {}'.format(card.properties['Type']))
