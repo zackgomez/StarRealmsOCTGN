@@ -5,7 +5,7 @@
   name="Star Realms"
   id="d250a313-c423-45e3-9c72-3182db31d925"
   octgnVersion="3.1.0.0"
-  version="1.0.0.169"
+  version="1.0.0.170"
   markersize="20"
   setsurl="http://zackgomez.com/octgn/starrealms/sets"
   gameurl="http://zackgomez.com/octgn/starrealms"
@@ -30,6 +30,8 @@
   </proxygen>
 
   <documents>
+    <document name="Rules Part 1" icon="proxy/blank.png" src="documents/StarRealmsRules1.jpg" />
+    <document name="Rules Part 2" icon="proxy/blank.png" src="documents/StarRealmsRules2.jpg" />
   </documents>
 
   <gameModes>
