@@ -31,7 +31,7 @@ def resetGame():
   explorerPileY = 0
   if me.hasInvertedTable():
     shipPlayingX *= -1
-    shipPlayingY *= -1
+    shipPlayingY = -(shipPlayingY + CARD_HEIGHT)
     shipPlayingXOffset *= -1
 
     explorerPileX *= -1
