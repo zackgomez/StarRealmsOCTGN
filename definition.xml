@@ -5,7 +5,7 @@
   name="Star Realms"
   id="d250a313-c423-45e3-9c72-3182db31d925"
   octgnVersion="3.1.0.0"
-  version="1.0.0.171"
+  version="1.0.0.172"
   markersize="20"
   setsurl="http://zackgomez.com/octgn/starrealms/sets"
   gameurl="http://zackgomez.com/octgn/starrealms"
@@ -57,7 +57,7 @@
     <cardaction menu="Activate Synergy Action" execute="synergyAction" />
     <cardaction menu="Activate Scrap Action" execute="scrapAction" />
     <cardaction menu="Scrap Card" execute="scrap" />
-    <cardaction menu="Discard Card" execute="discard" />
+    <cardaction menu="Discard Card" shortcut="del" execute="discard" />
 
     <cardaction menu="Scrap Trade Card" execute="scrapTradeCard" />
     <cardaction menu="Buy Card" execute="buyTradeCard" />
@@ -66,7 +66,7 @@
     <groupaction menu="Set Up Game" execute="setup" />
   </table>
 
-  <player summary="Authority: {#Authority}">
+  <player summary="Authority: {#Authority} Trade: {#Trade} Combat: {#Combat}">
     <counter name="Authority" icon="Counters/Authority.png" default="50" reset="True" />
     <counter name="Trade" icon="Counters/Trade.png" default="0" reset="True" />
     <counter name="Combat" icon="Counters/Combat.png" default="0" reset="True" />

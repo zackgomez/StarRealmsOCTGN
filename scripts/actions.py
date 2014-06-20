@@ -178,7 +178,6 @@ def playCard(card, x = 0, y = 0):
   if not me.isActivePlayer:
     whisper('It is not your turn')
     return
-  notify('{} plays {}'.format(me, card))
   if card.properties['Type'] == 'Base':
     moveBaseToTable(card)
   elif card.properties['Type'] == 'Ship':
@@ -187,6 +186,8 @@ def playCard(card, x = 0, y = 0):
     defaultAction(card)
   else:
     whisper('Error: unknown card type {}'.format(card.properties['Type']))
+  update()
+  notify('{} plays {}'.format(me, card))
 
 def drawCard(group, count=None):
   mute()
