@@ -142,6 +142,17 @@ def setup(group, x = 0, y = 0):
       for c in startingCards.top(1): c.moveTo(player.Deck)
 
   startingPlayer = me
+  if True or len(players) > 1:
+    buttonList = map(lambda player: player.name, players)
+    colorList = map(lambda player: '#000000', players)
+    customButtons = ['Random']
+    choice = askChoice('who should play first?', buttonList, colorList, customButtons)
+    if choice > 0 and choice < len(players):
+      startingPlayer = players[choice]
+    else:
+    # window closed or Random chosen handled here as choice = 0 and -1 respectively
+      playerIndex = rnd(0, len(players) - 1)
+      startingPlayer = players[playerIndex]
 
   whisper('Dealing starting hands')
   for player in players:
@@ -154,6 +165,9 @@ def setup(group, x = 0, y = 0):
 
   notify('{} plays first'.format(startingPlayer))
   startingPlayer.setActivePlayer()
+
+  timeoutms = 2000
+  contents, status = webRead('http://zackgomez.com:5000/game_start?num_players={}'.format(len(players)), timeoutms)
 
 def remoteDrawStartingHand(numCards):
   mute()
