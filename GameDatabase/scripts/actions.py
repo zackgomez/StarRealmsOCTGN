@@ -115,46 +115,50 @@ def setup(group, x = 0, y = 0):
   shared.piles['Explorers'].setController(me)
   startingCards.setController(me)
 
-  # deal out trade row
-  whisper('Setting out Trade Row')
-  shared.Deck.shuffle()
-  x = -100
-  y = 0
-  xincr = 100
-  if me.hasInvertedTable():
-    x = -x
-    y = -CARD_HEIGHT
-    xincr = -xincr
-  for i in xrange(5):
-    replaceTradeCard(x, y)
-    x += xincr
-
-  # set out explorers
-  whisper('Setting out Explorer pile')
-  for c in shared.piles['Explorers']:
-    c.moveToTable(explorerPileX, explorerPileY)
-    c.markers[neutralMarker] = 1
-
-  # deal out starting cards
-  whisper('Dealing out starting decks')
-  while len(startingCards) > 0:
-    for player in players:
-      for c in startingCards.top(1): c.moveTo(player.Deck)
-
+  # TODO: ask who should start with dialog, include random option
   startingPlayer = me
-  if True or len(players) > 1:
+  if len(players) > 1:
     buttonList = map(lambda player: player.name, players)
     colorList = map(lambda player: '#000000', players)
     customButtons = ['Random']
     choice = askChoice('who should play first?', buttonList, colorList, customButtons)
     if choice > 0 and choice < len(players):
       startingPlayer = players[choice]
+      notify('{} selected {} to play first', me, startingPlayer)
     else:
     # window closed or Random chosen handled here as choice = 0 and -1 respectively
       playerIndex = rnd(0, len(players) - 1)
       startingPlayer = players[playerIndex]
+      notify('randomly selected {} as the first player', startingPlayer)
 
-  whisper('Dealing starting hands')
+  # deal out trade row
+  notify('Setting out Trade Row')
+  shared.Deck.shuffle()
+  x = -100
+  y = 0
+  xincr = 100
+  if startingPlayer.hasInvertedTable():
+    x = -x
+    y = -CARD_HEIGHT
+    xincr = -xincr
+  for i in xrange(5):
+    replaceTradeCard(x, y, startingPlayer)
+    x += xincr
+
+  # set out explorers
+  notify('Setting out Explorer pile')
+  shared.piles['Explorers'].setController(startingPlayer)
+  update()
+  remoteCall(startingPlayer, 'remoteSetupExplorers', [])
+  update()
+
+  # deal out starting cards
+  notify('Dealing out starting decks')
+  while len(startingCards) > 0:
+    for player in players:
+      for c in startingCards.top(1): c.moveTo(player.Deck)
+
+  notify('Dealing starting hands')
   for player in players:
     if player == startingPlayer:
       cardCount = 3 
@@ -168,6 +172,17 @@ def setup(group, x = 0, y = 0):
 
   timeoutms = 2000
   contents, status = webRead('http://zackgomez.com:5000/game_start?num_players={}'.format(len(players)), timeoutms)
+
+def remoteSetupExplorers():
+  mute()
+  notify('{} is setting out explorers'.format(me))
+  shared.piles['Explorers'].setController(me)
+  for c in shared.piles['Explorers']:
+    c.moveToTable(explorerPileX, explorerPileY)
+    c.markers[neutralMarker] = 1
+    c.setController(me)
+  update()
+
 
 def remoteDrawStartingHand(numCards):
   mute()
@@ -274,13 +289,14 @@ def scrapAction(card, x = 0, y = 0):
     notify("{} takes scrap action on {}: {}".format(me, card, actionText))
     scrapImpl(card)
 
-def replaceTradeCard(x, y):
+def replaceTradeCard(x, y, player = me):
   mute()
   if len(shared.Deck) == 0:
     notify('Deck is out of cards')
     return
   for c in shared.Deck.top(1):
     c.moveToTable(x, y)
+    c.setController(player)
     c.markers[neutralMarker] = 1
     update()
     notify('Added {} to trade row'.format(c))
