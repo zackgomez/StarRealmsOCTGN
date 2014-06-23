@@ -1,0 +1,12 @@
+{
+  "name": "star-realms-octgn-stats",
+  "description": "stats server for star realms octgn implementation",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "3.x",
+    "redis": "*",
+    "levelup": "0.18.x",
+    "leveldown": "0.10.x"
+  }
+}
