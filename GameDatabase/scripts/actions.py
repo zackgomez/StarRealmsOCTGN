@@ -115,21 +115,21 @@ def setup(group, x = 0, y = 0):
   shared.piles['Explorers'].setController(me)
   startingCards.setController(me)
 
-  # TODO: ask who should start with dialog, include random option
+  # ask for starting player
   startingPlayer = me
   if len(players) > 1:
     buttonList = map(lambda player: player.name, players)
     colorList = map(lambda player: '#000000', players)
     customButtons = ['Random']
-    choice = askChoice('who should play first?', buttonList, colorList, customButtons)
-    if choice > 0 and choice < len(players):
-      startingPlayer = players[choice]
-      notify('{} selected {} to play first', me, startingPlayer)
+    choice = askChoice('Who should play first?', buttonList, colorList, customButtons)
+    if choice > 0 and choice <= len(players):
+      startingPlayer = players[choice - 1]
+      notify('{} selected {} to play first'.format(me, startingPlayer))
     else:
     # window closed or Random chosen handled here as choice = 0 and -1 respectively
       playerIndex = rnd(0, len(players) - 1)
       startingPlayer = players[playerIndex]
-      notify('randomly selected {} as the first player', startingPlayer)
+      notify('randomly selected {} as the first player'.format(startingPlayer))
 
   # deal out trade row
   notify('Setting out Trade Row')
@@ -183,6 +183,8 @@ def remoteSetupExplorers():
     c.setController(me)
   update()
 
+def shuffle(group, count = None):
+  group.shuffle()
 
 def remoteDrawStartingHand(numCards):
   mute()
@@ -217,6 +219,17 @@ def playCard(card, x = 0, y = 0):
     whisper('Error: unknown card type {}'.format(card.properties['Type']))
   update()
   notify('{} plays {}'.format(me, card))
+
+def playAllFromHand(group, count = None):
+  mute()
+  if not me.isActivePlayer:
+    whisper('It is not your turn')
+    return
+  cards = [card for card in me.hand]
+  for card in cards:
+    if card.group != me.hand:
+      continue
+    playCard(card)
 
 def drawCard(group, count=None):
   mute()
