@@ -22,11 +22,12 @@ def onTableLoad():
 
 def resetGame():
   whisper('Inverted? {}'.format(me.hasInvertedTable()))
-  global shipPlayingX, shipPlayingY, shipPlayingXOffset
+  global shipPlayingX, shipPlayingY, shipPlayingXOffset, shipsPlayedThisTurn
   global explorerPileX, explorerPileY
   shipPlayingX = -300
   shipPlayingXOffset = 100
   shipPlayingY = 150
+  shipsPlayedThisTurn = 0
   explorerPileX = -300
   explorerPileY = 0
   if me.hasInvertedTable():
@@ -74,7 +75,7 @@ def endTurn(group, x = 0, y = 0):
     c.moveTo(me.Discard)
 
   for i in xrange(5):
-    drawCard(me.hand)
+    drawCardImpl(False)
 
   if len(players) < 2:
     return
@@ -209,6 +210,7 @@ def playCard(card, x = 0, y = 0):
   if not me.isActivePlayer:
     whisper('It is not your turn')
     return
+  notify('{} plays {}'.format(me, card))
   if card.properties['Type'] == 'Base':
     moveBaseToTable(card)
   elif card.properties['Type'] == 'Ship':
@@ -218,7 +220,6 @@ def playCard(card, x = 0, y = 0):
   else:
     whisper('Error: unknown card type {}'.format(card.properties['Type']))
   update()
-  notify('{} plays {}'.format(me, card))
 
 def playAllFromHand(group, count = None):
   mute()
@@ -232,6 +233,9 @@ def playAllFromHand(group, count = None):
     playCard(card)
 
 def drawCard(group, count=None):
+  drawCardImpl()
+
+def drawCardImpl(shouldNotify = True):
   mute()
   if len(me.Deck) == 0:
     if (len(me.Discard) == 0):
@@ -242,7 +246,7 @@ def drawCard(group, count=None):
     me.Deck.shuffle()
     notify('{} shuffles their discard into their deck'.format(me))
   me.Deck[0].moveTo(me.hand)
-  notify('{} draws a card'.format(me))
+  if shouldNotify: notify('{} draws a card'.format(me))
 
 def discard(card, x = 0, y = 0):
   mute()
@@ -256,6 +260,10 @@ def scrap(card, x = 0, y = 0):
   if card.markers[neutralMarker]:
     return
   scrapImpl(card)
+
+def lookAtPile(group, count = None):
+  # -1 means all cards
+  group.lookAt(-1)
 
 def doubleClick(card, x = 0, y = 0):
   mute()

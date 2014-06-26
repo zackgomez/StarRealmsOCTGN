@@ -494,7 +494,7 @@
       <property name="Faction" value="Blob" />
       <property name="Type" value="Base" />
       <property name="Cost" value="8" />
-      <property name="Action" value="5 Combat or Draw a card for each Blobl card that you've played this turn" />
+      <property name="Action" value="5 Combat or Draw a card for each Blob card that you've played this turn" />
       <property name="SynergyAction" value="" />
       <property name="ScrapAction" value="" />
       <property name="BaseArmor" value="7" />

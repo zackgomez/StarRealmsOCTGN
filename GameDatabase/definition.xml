@@ -5,10 +5,10 @@
   name="Star Realms"
   id="d250a313-c423-45e3-9c72-3182db31d925"
   octgnVersion="3.1.0.0"
-  version="1.0.2.2"
+  version="1.0.2.3"
   markersize="20"
-  setsurl="http://zackgomez.com/octgn/starrealms/sets"
-  gameurl="http://zackgomez.com/octgn/starrealms"
+  setsurl="http://octgn.gamersjudgement.com/wordpress/starrealms/installation/"
+  gameurl="http://octgn.gamersjudgement.com/wordpress/starrealms/"
   authors="starruler"
   iconurl="http://starrealms.com/wp-content/uploads/2013/12/CardBack24-1.png"
   description="Star Realms is a two player deckbuilding game."
@@ -56,11 +56,11 @@
     <cardaction menu="Activate Action" execute="defaultAction" />
     <cardaction menu="Activate Synergy Action" execute="synergyAction" />
     <cardaction menu="Activate Scrap Action" execute="scrapAction" />
-    <cardaction menu="Scrap Card" execute="scrap" />
+
     <cardaction menu="Discard Card" shortcut="del" execute="discard" />
 
+    <cardaction menu="Buy Trade Card" execute="buyTradeCard" />
     <cardaction menu="Scrap Trade Card" execute="scrapTradeCard" />
-    <cardaction menu="Buy Card" execute="buyTradeCard" />
 
     <groupaction menu="End Turn" execute="endTurn" />
     <groupaction menu="Set Up Game" execute="setup" />
@@ -75,7 +75,6 @@
       <cardaction menu="Play Card" default="True" execute="playCard" />
       <cardaction menu="Discard" shortcut="del" execute="discard" />
       <cardaction menu="Scrap Card" execute="scrap" />
-      <groupaction menu="Draw Card" execute="drawCard" />
       <groupaction menu="Play All" execute="playAllFromHand" />
     </hand>
 
@@ -86,6 +85,7 @@
 
     <group name="Discard" icon="Groups/Discard.png" height="176" width="126" ordered="False" visibility="all" collapsed="False">
       <cardaction menu="Scrap Card" execute="scrap" />
+      <groupaction menu="Look At Discard" default="True" execute="lookAtPile" />
     </group>
   </player>
 
