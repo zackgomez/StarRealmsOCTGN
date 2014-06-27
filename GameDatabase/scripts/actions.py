@@ -203,6 +203,8 @@ def moveBaseToTable(base):
     baseX += xincr
   base.moveToTable(baseX, baseY)
   base.orientation = Rot90
+  update()
+  notify('{} plays {}'.format(me, card))
 
 def playCard(card, x = 0, y = 0):
   mute()
@@ -210,12 +212,13 @@ def playCard(card, x = 0, y = 0):
   if not me.isActivePlayer:
     whisper('It is not your turn')
     return
-  notify('{} plays {}'.format(me, card))
   if card.properties['Type'] == 'Base':
     moveBaseToTable(card)
   elif card.properties['Type'] == 'Ship':
     card.moveToTable(shipPlayingX + shipPlayingXOffset * shipsPlayedThisTurn, shipPlayingY)
+    update()
     shipsPlayedThisTurn += 1
+    notify('{} plays {}'.format(me, card))
     defaultAction(card)
   else:
     whisper('Error: unknown card type {}'.format(card.properties['Type']))
