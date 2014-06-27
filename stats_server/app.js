@@ -42,7 +42,7 @@ app.get('/game_start', function(req, res) {
 });
 
 var log_game = function (game) {
-  console.log('logging game: ', JSON.stringify(game));
+  util.log(util.format('logging game: %j', JSON.stringify(game)));
   var num_players = game.num_players;
   get_from_db_with_default(db, 'game_count_by_players', {}, function (err, game_count_by_players) {
     if (err) {
